@@ -267,3 +267,8 @@ void PBDBoundarySimulator::reset()
 	else if (sim->getBoundaryHandlingMethod() == BoundaryHandlingMethods::Bender2019)
 		m_base->updateVMVelocity();
 }
+
+void PBDBoundarySimulator::moreDeferredInit() {
+	m_pbdWrapper->moreDeferredInit();
+
+}

@@ -101,6 +101,9 @@ void SceneLoader::readScene(const char *fileName, Scene &scene)
 				data->isWall = false;
 				readValue<bool>(boundaryModel["isWall"], data->isWall);
 
+				data->noRigidCollisions = false;
+				readValue<bool>(boundaryModel["noRigidCollisions"], data->isWall);
+
 				data->color = Eigen::Vector4f(1.0f, 0.0f, 0.0f, 0.0f);
 				readVector(boundaryModel["color"], data->color);
 

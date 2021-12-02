@@ -36,6 +36,7 @@ namespace Utilities
 			Real density;
 			bool dynamic;
 			bool isWall;
+			bool noRigidCollisions;
 			Eigen::Matrix<float, 4, 1, Eigen::DontAlign> color;
 			void *rigidBody;
 

@@ -35,10 +35,13 @@ public:
 		Vector3r scale;
 		std::string objFile;
 		int collisionType;
+		bool noRigidCollisions;
 		Real restitution;
 		Real friction;
 	};
 
+	void moreDeferredInit();
+	
 	PBDWrapper();
 	~PBDWrapper();
 

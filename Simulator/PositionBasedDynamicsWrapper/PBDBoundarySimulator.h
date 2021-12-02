@@ -28,6 +28,8 @@ namespace SPH
 		virtual void initBoundaryData();
 		virtual void reset();
 
+		virtual void moreDeferredInit();
+		
 		PBDWrapper *getPBDWrapper() { return m_pbdWrapper; }
 	};
 }

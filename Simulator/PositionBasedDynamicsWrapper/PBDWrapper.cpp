@@ -368,7 +368,10 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 			rbd.m_x,
 			rbd.m_q,
 			vd, mesh,
-			rbd.m_scale);
+						rbd.m_scale,
+						rbd_m_noCollisions
+						
+			);
 
 		if (!rbd.m_isDynamic)
 		{
@@ -867,4 +870,13 @@ PBD::TimeStepController & PBDWrapper::getTimeStepController()
 		}
 	}
  }
- 
+
+void PBDWrapper::moreDeferredInit() {
+	PBD::TimeManager * pbdtm = PBD::TimeManager::getCurrent();
+	SPH::TimeManager * sphtm = SPH::TimeManager::getCurrent();
+	std::cout << "PBD Time: " << pbdtm->getTime() << ", SPH time: " << sphtm->getTime() << "\n";
+
+	pbdtm->setTime(sphtm->getTime());
+
+	m_timeStep->updateTargets(getSimulationModel());
+}
