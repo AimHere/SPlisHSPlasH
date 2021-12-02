@@ -27,6 +27,13 @@ namespace SPH
 		virtual Vector3r getWorldSpacePosition() const = 0;
 		virtual Vector3r const& getVelocity() const = 0;
 		virtual void setVelocity(const Vector3r &v) = 0;
+
+		virtual void setOldPosition(const Vector3r &v) {};
+
+		virtual Vector3r getOldPosition() { return Vector3r(); };
+		virtual Vector3r getLastPosition() {return Vector3r(); };		
+		virtual Vector3r getPosition0() { return Vector3r();};
+		
 		virtual Quaternionr const& getRotation() const = 0;
 		virtual void setRotation(const Quaternionr &q) = 0;
 		virtual Matrix3r getWorldSpaceRotation() const = 0;

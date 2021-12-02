@@ -54,6 +54,8 @@ public:
 	void timeStep();
 	void updateVisModels();
 
+	void moreDeferredInit();
+
 	void loadObj(const std::string &filename, PBD::VertexData &vd, Utilities::IndexedFaceMesh &mesh, const Vector3r &scale);
 
 	PBD::SimulationModel &getSimulationModel() { return m_model; }

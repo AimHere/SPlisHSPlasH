@@ -5,6 +5,10 @@
 
 using namespace SPH;
 
+
+
+
+
 void BoundarySimulator::updateBoundaryForces()
 {
 	Real h = TimeManager::getCurrent()->getTimeStepSize();
@@ -14,6 +18,7 @@ void BoundarySimulator::updateBoundaryForces()
 	{
 		BoundaryModel *bm = sim->getBoundaryModel(i);
 		RigidBodyObject *rbo = bm->getRigidBodyObject();
+
 		if (rbo->isDynamic())
 		{
 			Vector3r force, torque;

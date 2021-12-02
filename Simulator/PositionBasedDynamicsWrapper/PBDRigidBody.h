@@ -27,12 +27,29 @@ namespace SPH
 		virtual Vector3r const& getAngularVelocity() const { return m_rigidBody->getAngularVelocity(); }
 		virtual void setAngularVelocity(const Vector3r &v) { m_rigidBody->setAngularVelocity(v); }
 
+
+		virtual Vector3r const& getOldPosition() const { return m_rigidBody->getOldPosition(); }
+		virtual Vector3r const& getLastPosition() const { return m_rigidBody->getLastPosition(); }
+		virtual Vector3r const& getPosition0() const { return m_rigidBody->getPosition0(); }
+
+		
 		virtual void setPosition(const Vector3r &x) 
 		{ 
+			std::cout << __func__ << ":PBR SetPosition: " << x[0] << "," << x[1] << "," << x[2] << "\n";
 			m_rigidBody->setPosition(x); 
 			m_rigidBody->getGeometry().updateMeshTransformation(m_rigidBody->getPosition(), m_rigidBody->getRotationMatrix());
 		}
 
+		virtual void setOldPosition(const Vector3r &x) 
+		{ 
+			std::cout << __func__ << ":PBR SetOldPosition: " << x[0] << "," << x[1] << "," << x[2] << "\n";
+			m_rigidBody->setOldPosition(x);
+			m_rigidBody->setPosition0(x);
+			m_rigidBody->setLastPosition(x);
+			
+			//m_rigidBody->getGeometry().updateMeshTransformation(m_rigidBody->getPosition(), m_rigidBody->getRotationMatrix());
+		}
+		
 		virtual void setRotation(const Quaternionr &q) 
 		{ 
 			m_rigidBody->setRotation(q); m_rigidBody->rotationUpdated(); 

@@ -36,6 +36,7 @@ namespace Utilities
 			Real density;
 			bool dynamic;
 			bool isWall;
+			bool fluidOnly; // fluid only collisions
 			Eigen::Matrix<float, 4, 1, Eigen::DontAlign> color;
 			void *rigidBody;
 

@@ -536,10 +536,12 @@ void SimulatorBase::deferredInit()
 void SimulatorBase::runSimulation()
 {
 	deferredInit();
-
+	
 	if (getStateFile() != "")
 		loadState(getStateFile());
 
+	//m_boundarySimulator->moreDeferredInit();
+		
 	if (!m_useGUI)
 	{
 		const Real stopAt = getValue<Real>(SimulatorBase::STOP_AT);
@@ -1745,6 +1747,8 @@ void SPH::SimulatorBase::loadState(const std::string &stateFile)
 	if (md5Str != md5StrState)
 		LOG_WARN << "State was stored for another scene file.";
 	TimeManager::getCurrent()->loadState(binReader);
+	m_boundarySimulator->moreDeferredInit();
+	
 	Simulation::getCurrent()->loadState(binReader);
 
 	const std::string importFilePath = FileSystem::getFilePath(stateFile);
@@ -1782,7 +1786,11 @@ void SPH::SimulatorBase::loadState(const std::string &stateFile)
 		{
 			Vector3r x;
 			binReader.readMatrix(x);
+			if (i == 2) {
+				std::cout << __func__ << ":SetPosition: " << x[0] << "\n";
+			}
 			bm->getRigidBodyObject()->setPosition(x);
+			bm->getRigidBodyObject()->setOldPosition(x);
 
 			Quaternionr q;
 			binReader.readMatrix(q.coeffs());

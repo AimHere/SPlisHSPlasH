@@ -63,6 +63,9 @@ namespace SPH
 
 			FORCE_INLINE void setPosition0(const unsigned int i, const Vector3r &pos)
 			{
+				if (i == 2) {
+					std::cout << __func__ << ":BM_Akinci2012:SetPosition0: " << m_x0[i][0] << "\n";
+				}
 				m_x0[i] = pos;
 			}
 
@@ -78,6 +81,10 @@ namespace SPH
 
 			FORCE_INLINE void setPosition(const unsigned int i, const Vector3r &pos)
 			{
+				if (i == 2) {
+					std::cout << __func__ << ":BM_Akinci2012:SetPosition: " << m_x[i][0] << "\n";
+				}
+				
 				m_x[i] = pos;
 			}
 

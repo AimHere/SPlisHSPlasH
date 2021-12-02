@@ -31,6 +31,7 @@ PBDWrapper::PBDWrapper()
 	m_timeStep->init();
 	m_model.init();
 	PBD::Simulation::getCurrent()->setModel(&m_model);
+	
 }
 
 PBDWrapper::~PBDWrapper()
@@ -867,4 +868,15 @@ PBD::TimeStepController & PBDWrapper::getTimeStepController()
 		}
 	}
  }
- 
+
+void PBDWrapper::moreDeferredInit() {
+	// std::cout << "PBDWrapper::moreDeferredInit being run\n";
+
+	PBD::TimeManager * pbdtm = PBD::TimeManager::getCurrent();
+	SPH::TimeManager * sphtm =  SPH::TimeManager::getCurrent();
+	std::cout << "PBD Time: " << pbdtm->getTime() << ", SPH Time: " << sphtm->getTime() << "\n";
+
+	pbdtm->setTime(sphtm->getTime());
+	// Update the targets immediately
+	m_timeStep->updateTargets(getSimulationModel());	
+}

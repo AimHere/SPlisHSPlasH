@@ -35,6 +35,12 @@ void PBDBoundarySimulator::init()
 	}
 }
 
+void PBDBoundarySimulator::moreDeferredInit() {
+	m_pbdWrapper->moreDeferredInit();
+}
+
+
+
 void PBDBoundarySimulator::timeStep()
 {
 	updateBoundaryForces();

@@ -98,6 +98,9 @@ void SceneLoader::readScene(const char *fileName, Scene &scene)
 				data->dynamic = false;
 				readValue<bool>(boundaryModel["isDynamic"], data->dynamic);
 
+				data->noRigidRigid = false;
+				readValue<bool>(boundaryModel["noRigidCollisions"], data->fluidOnly);
+				
 				data->isWall = false;
 				readValue<bool>(boundaryModel["isWall"], data->isWall);
 

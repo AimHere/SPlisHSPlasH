@@ -251,6 +251,9 @@ namespace SPH
 
 			FORCE_INLINE void setPosition0(const unsigned int i, const Vector3r &pos)
 			{
+				if (i == 2) {
+					std::cout << __func__ << ":FluidModel:SetPosition: " << m_x0[i][0] << "\n";
+				}
 				m_x0[i] = pos;
 			}
 
@@ -261,6 +264,11 @@ namespace SPH
 
 			FORCE_INLINE const Vector3r &getPosition(const unsigned int i) const
 			{
+				if (i == 2) {
+					std::cout << __func__ << ":FluidModel:SetPosition: " << m_x[i][0] << "\n";
+				}
+				
+				
 				return m_x[i];
 			}
 
