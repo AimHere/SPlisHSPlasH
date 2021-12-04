@@ -35,10 +35,13 @@ public:
 		Vector3r scale;
 		std::string objFile;
 		int collisionType;
+		bool noRigidCollisions;
 		Real restitution;
 		Real friction;
 	};
 
+	void moreDeferredInit();
+	
 	PBDWrapper();
 	~PBDWrapper();
 
@@ -53,8 +56,6 @@ public:
 
 	void timeStep();
 	void updateVisModels();
-
-	void moreDeferredInit();
 
 	void loadObj(const std::string &filename, PBD::VertexData &vd, Utilities::IndexedFaceMesh &mesh, const Vector3r &scale);
 

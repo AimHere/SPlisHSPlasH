@@ -1746,6 +1746,7 @@ void SPH::SimulatorBase::loadState(const std::string &stateFile)
 	readParameterState(binReader);
 	if (md5Str != md5StrState)
 		LOG_WARN << "State was stored for another scene file.";
+
 	TimeManager::getCurrent()->loadState(binReader);
 	m_boundarySimulator->moreDeferredInit();
 	

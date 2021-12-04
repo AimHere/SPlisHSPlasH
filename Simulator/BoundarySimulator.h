@@ -22,7 +22,6 @@ namespace SPH
 		virtual void reset() {}
 
 		virtual void moreDeferredInit() {}
-
 		
 		void updateBoundaryForces();		
 	};

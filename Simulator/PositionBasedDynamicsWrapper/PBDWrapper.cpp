@@ -369,6 +369,7 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 			rbd.m_x,
 			rbd.m_q,
 			vd, mesh,
+
 			rbd.m_scale,
 			rbd.m_noCollisions,
 			rbd.m_isWall);
@@ -872,13 +873,12 @@ PBD::TimeStepController & PBDWrapper::getTimeStepController()
  }
 
 void PBDWrapper::moreDeferredInit() {
-	// std::cout << "PBDWrapper::moreDeferredInit being run\n";
-
 	PBD::TimeManager * pbdtm = PBD::TimeManager::getCurrent();
-	SPH::TimeManager * sphtm =  SPH::TimeManager::getCurrent();
-	std::cout << "PBD Time: " << pbdtm->getTime() << ", SPH Time: " << sphtm->getTime() << "\n";
+	SPH::TimeManager * sphtm = SPH::TimeManager::getCurrent();
+	std::cout << "PBD Time: " << pbdtm->getTime() << ", SPH time: " << sphtm->getTime() << "\n";
 
 	pbdtm->setTime(sphtm->getTime());
-	// Update the targets immediately
-	m_timeStep->updateTargets(getSimulationModel());	
+
+	m_timeStep->updateTargets(getSimulationModel());
+
 }
