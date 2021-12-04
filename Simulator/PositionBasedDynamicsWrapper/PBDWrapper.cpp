@@ -369,7 +369,9 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 			rbd.m_x,
 			rbd.m_q,
 			vd, mesh,
-			rbd.m_scale);
+			rbd.m_scale,
+			rbd.m_noCollisions,
+			rbd.m_isWall);
 
 		if (!rbd.m_isDynamic)
 		{

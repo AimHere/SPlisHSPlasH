@@ -351,7 +351,7 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 	LOG_INFO  << "SPlisHSPlasH version: " << SPLISHSPLASH_VERSION;
 	LOG_DEBUG << "Git refspec:          " << GIT_REFSPEC;
 	LOG_DEBUG << "Git SHA1:             " << GIT_SHA1;
-	LOG_DEBUG << "Git status:           " << GIT_LOCAL_STATUS;
+	LOG_DEBUG << "Git status:           " <<GIT_LOCAL_STATUS;
 	LOG_DEBUG << "Host name:            " << SystemInfo::getHostName();
 
 	if (!getUseParticleCaching())
